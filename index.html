@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CU writer fonts</title>
+    <style>
+      .glyph {
+        position: absolute;
+        cursor: pointer;
+      }
+      .glyph:hover {
+        outline: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Bitmap font from
+      <a
+        href="https://th.wikipedia.org/wiki/%E0%B8%8B%E0%B8%B5%E0%B8%A2%E0%B8%B9%E0%B9%84%E0%B8%A3%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C"
+        >CU Writer</a
+      >
+    </h1>
+    <p>
+      <a href="https://github.com/dtinth/cu-writer-fonts">GitHub</a>
+    </p>
+    <div style="display: flex">
+      <div style="position: relative; flex: 0 0 256px">
+        <div style="position: sticky; top: 8px" id="info"></div>
+      </div>
+      <div style="position: relative; flex: 1" id="atlas">
+        <img style="display: block" src="glyphs.png" id="glyphs" />
+      </div>
+    </div>
+    <script>
+      async function main() {
+        const data = await fetch("glyphs.json").then((r) => r.json());
+        const atlas = document.getElementById("atlas");
+        const tmpCanvas = document.createElement("canvas");
+        const tmpCtx = tmpCanvas.getContext("2d");
+        for (const [font, glyphs] of Object.entries(data)) {
+          for (const [id, glyph] of Object.entries(glyphs)) {
+            if (!glyph.x && !glyph.y) continue;
+            const element = document.createElement("div");
+            element.className = "glyph";
+            element.style.top = `${glyph.y}px`;
+            element.style.left = `${glyph.x}px`;
+            element.style.width = `${glyph.width}px`;
+            element.style.height = `${glyph.height}px`;
+            const bytesOf = (x) => {
+              if (!x) return "";
+              return Array.from(
+                atob(x),
+                (c, i) =>
+                  c.charCodeAt(0).toString().padStart(4, " ") +
+                  (i % 4 == 3 ? "\n" : "")
+              ).join("");
+            };
+            element.onmouseover = () => {
+              tmpCanvas.width = glyph.width;
+              tmpCanvas.height = glyph.height;
+              tmpCtx.clearRect(0, 0, glyph.width, glyph.height);
+              tmpCtx.drawImage(
+                document.getElementById("glyphs"),
+                glyph.x,
+                glyph.y,
+                glyph.width,
+                glyph.height,
+                0,
+                0,
+                glyph.width,
+                glyph.height
+              );
+              document.getElementById("info").innerHTML = `
+                <strong>${font} &rarr; ${id}</strong><br>
+                ${glyph.width}&times;${glyph.height}<br>
+
+                <pre>${bytesOf(glyph.header)}</pre>
+                <img src="${tmpCanvas.toDataURL()}">
+              `;
+            };
+            atlas.appendChild(element);
+          }
+        }
+      }
+      main();
+    </script>
+  </body>
+</html>

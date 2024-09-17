@@ -71,7 +71,7 @@
         const fonts = {};
         for (const file of files) {
           const font = {};
-          fonts[file] = font;
+          fonts[file.replace(".json", "")] = font;
           const response = await fetch(`./output/${file}`);
           const glyphs = await response.json();
           for (const [id, glyph] of Object.entries(glyphs)) {

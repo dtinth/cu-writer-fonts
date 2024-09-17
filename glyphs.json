@@ -1,5 +1,5 @@
 {
-  "CU_HP_10.FNT.json": {
+  "CU_HP_10.FNT": {
     "0#33": {
       "x": 0,
       "y": 1,
@@ -14034,7 +14034,7 @@
       "header": "BAAOAQAAAAUAGQAVABoAeA=="
     }
   },
-  "CU_HP_12.FNT.json": {
+  "CU_HP_12.FNT": {
     "0#32": {
       "width": 32,
       "height": 1,
@@ -28094,7 +28094,7 @@
       "header": "BAAOAQAAAAQAGQARABoAZA=="
     }
   },
-  "ITALIC.FON.json": {
+  "ITALIC.FON": {
     "#0": {
       "width": 8,
       "height": 20
@@ -29538,7 +29538,7 @@
       "height": 20
     }
   },
-  "ITALIC.P24.json": {
+  "ITALIC.P24": {
     "#32": {
       "width": 18,
       "height": 24
@@ -30850,7 +30850,7 @@
       "height": 24
     }
   },
-  "ITALIC.PRN.json": {
+  "ITALIC.PRN": {
     "#0": {
       "width": 22,
       "height": 16
@@ -32306,7 +32306,7 @@
       "height": 16
     }
   },
-  "ITALIC2.FON.json": {
+  "ITALIC2.FON": {
     "#0": {
       "width": 8,
       "height": 20
@@ -33750,7 +33750,7 @@
       "height": 20
     }
   },
-  "ITALIC2.P24.json": {
+  "ITALIC2.P24": {
     "#32": {
       "width": 18,
       "height": 24
@@ -35062,7 +35062,7 @@
       "height": 24
     }
   },
-  "ITALIC2.PRN.json": {
+  "ITALIC2.PRN": {
     "#0": {
       "width": 22,
       "height": 16
@@ -36526,7 +36526,7 @@
       "height": 16
     }
   },
-  "ITALIC3.FON.json": {
+  "ITALIC3.FON": {
     "#0": {
       "x": 814,
       "y": 5542,
@@ -38064,7 +38064,7 @@
       "height": 20
     }
   },
-  "ITALIC3.P24.json": {
+  "ITALIC3.P24": {
     "#32": {
       "width": 18,
       "height": 24
@@ -39376,7 +39376,7 @@
       "height": 24
     }
   },
-  "ITALIC3.PRN.json": {
+  "ITALIC3.PRN": {
     "#0": {
       "width": 22,
       "height": 16
@@ -40840,7 +40840,7 @@
       "height": 16
     }
   },
-  "ITALIC4.FON.json": {
+  "ITALIC4.FON": {
     "#0": {
       "x": 264,
       "y": 5766,
@@ -42378,7 +42378,7 @@
       "height": 20
     }
   },
-  "ITALIC4.P24.json": {
+  "ITALIC4.P24": {
     "#32": {
       "x": 264,
       "y": 5806,
@@ -43724,7 +43724,7 @@
       "height": 24
     }
   },
-  "ITALIC4.PRN.json": {
+  "ITALIC4.PRN": {
     "#0": {
       "width": 22,
       "height": 16
@@ -45180,7 +45180,7 @@
       "height": 16
     }
   },
-  "ITALICS.P24.json": {
+  "ITALICS.P24": {
     "#32": {
       "width": 18,
       "height": 16
@@ -46434,7 +46434,7 @@
       "height": 16
     }
   },
-  "ITALICS.PRN.json": {
+  "ITALICS.PRN": {
     "#0": {
       "width": 22,
       "height": 16
@@ -47920,7 +47920,7 @@
       "height": 16
     }
   },
-  "ITALICS2.P24.json": {
+  "ITALICS2.P24": {
     "#32": {
       "width": 18,
       "height": 16
@@ -49174,7 +49174,7 @@
       "height": 16
     }
   },
-  "ITALICS3.P24.json": {
+  "ITALICS3.P24": {
     "#32": {
       "width": 18,
       "height": 16
@@ -50428,7 +50428,7 @@
       "height": 16
     }
   },
-  "ITALICS4.P24.json": {
+  "ITALICS4.P24": {
     "#32": {
       "x": 432,
       "y": 6214,
@@ -51774,7 +51774,7 @@
       "height": 16
     }
   },
-  "NORMAL.FON.json": {
+  "NORMAL.FON": {
     "#0": {
       "width": 8,
       "height": 20
@@ -53226,7 +53226,7 @@
       "height": 20
     }
   },
-  "NORMAL.P24.json": {
+  "NORMAL.P24": {
     "#32": {
       "width": 18,
       "height": 24
@@ -54538,7 +54538,7 @@
       "height": 24
     }
   },
-  "NORMAL.PRN.json": {
+  "NORMAL.PRN": {
     "#0": {
       "width": 22,
       "height": 16
@@ -56002,7 +56002,7 @@
       "height": 16
     }
   },
-  "NORMAL2.FON.json": {
+  "NORMAL2.FON": {
     "#0": {
       "width": 8,
       "height": 20
@@ -57414,7 +57414,7 @@
       "height": 20
     }
   },
-  "NORMAL2.P24.json": {
+  "NORMAL2.P24": {
     "#32": {
       "width": 18,
       "height": 24
@@ -58678,7 +58678,7 @@
       "height": 24
     }
   },
-  "NORMAL2.PRN.json": {
+  "NORMAL2.PRN": {
     "#0": {
       "width": 22,
       "height": 16
@@ -60080,7 +60080,7 @@
       "height": 16
     }
   },
-  "NORMAL3.FON.json": {
+  "NORMAL3.FON": {
     "#0": {
       "x": 374,
       "y": 6662,
@@ -61524,7 +61524,7 @@
       "height": 20
     }
   },
-  "NORMAL3.P24.json": {
+  "NORMAL3.P24": {
     "#32": {
       "width": 18,
       "height": 24
@@ -62836,7 +62836,7 @@
       "height": 24
     }
   },
-  "NORMAL3.PRN.json": {
+  "NORMAL3.PRN": {
     "#0": {
       "width": 22,
       "height": 16
@@ -64300,7 +64300,7 @@
       "height": 16
     }
   },
-  "NORMAL4.FON.json": {
+  "NORMAL4.FON": {
     "#0": {
       "width": 8,
       "height": 20
@@ -65742,7 +65742,7 @@
       "height": 20
     }
   },
-  "NORMAL4.P24.json": {
+  "NORMAL4.P24": {
     "#32": {
       "width": 18,
       "height": 24
@@ -67050,7 +67050,7 @@
       "height": 24
     }
   },
-  "NORMAL4.PRN.json": {
+  "NORMAL4.PRN": {
     "#0": {
       "width": 22,
       "height": 16
@@ -68514,7 +68514,7 @@
       "height": 16
     }
   },
-  "NORMALS.P24.json": {
+  "NORMALS.P24": {
     "#32": {
       "width": 18,
       "height": 16
@@ -69790,7 +69790,7 @@
       "height": 16
     }
   },
-  "NORMALS.PRN.json": {
+  "NORMALS.PRN": {
     "#0": {
       "width": 22,
       "height": 16
@@ -71248,7 +71248,7 @@
       "height": 16
     }
   },
-  "NORMALS2.P24.json": {
+  "NORMALS2.P24": {
     "#32": {
       "width": 18,
       "height": 16
@@ -72550,7 +72550,7 @@
       "height": 16
     }
   },
-  "NORMALS2.PRN.json": {
+  "NORMALS2.PRN": {
     "#0": {
       "width": 22,
       "height": 16
@@ -74006,7 +74006,7 @@
       "height": 16
     }
   },
-  "NORMALS3.P24.json": {
+  "NORMALS3.P24": {
     "#32": {
       "width": 18,
       "height": 16
@@ -75282,7 +75282,7 @@
       "height": 16
     }
   },
-  "NORMALS3.PRN.json": {
+  "NORMALS3.PRN": {
     "#0": {
       "width": 22,
       "height": 16
@@ -76738,7 +76738,7 @@
       "height": 16
     }
   },
-  "NORMALS4.P24.json": {
+  "NORMALS4.P24": {
     "#32": {
       "x": 858,
       "y": 7446,
@@ -78084,7 +78084,7 @@
       "height": 16
     }
   },
-  "NORMALS4.PRN.json": {
+  "NORMALS4.PRN": {
     "#0": {
       "width": 22,
       "height": 16
