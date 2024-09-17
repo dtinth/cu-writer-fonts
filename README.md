@@ -15,6 +15,11 @@ Bitmap font data from [CU Writer](https://th.wikipedia.org/wiki/%E0%B8%8B%E0%B8%
 - `glyphs.json`: Contains the final JSON metadata.
 - `glyphs.d.ts`: Contains the TypeScript type definitions for the JSON metadata.
 
+> [!NOTE]
+> Right now, the bitmaps from the HP-family fonts are variable-sized, although the glyphs are monospaced.
+> It is assume that the header should contain information on how to correctly render this variable-size bitmap, but it has not yet been studied.
+> The raw header content is available in the JSON metadata, base64 encoded.
+
 ## Glyphs
 
 ![Glyphs](glyphs.png)
