@@ -13,6 +13,7 @@ Bitmap font data from [CU Writer](https://th.wikipedia.org/wiki/%E0%B8%8B%E0%B8%
 - `preview.html`: Contains the web application that generates the final files.
 - `glyphs.png`: Contains the final PNG image.
 - `glyphs.json`: Contains the final JSON metadata.
+- `glyphs.d.ts`: Contains the TypeScript type definitions for the JSON metadata.
 
 ## Glyphs
 
