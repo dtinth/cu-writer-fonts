@@ -14,6 +14,7 @@ Bitmap font data from [CU Writer](https://th.wikipedia.org/wiki/%E0%B8%8B%E0%B8%
 - `glyphs.png`: Contains the final PNG image.
 - `glyphs.json`: Contains the final JSON metadata.
 - `glyphs.d.ts`: Contains the TypeScript type definitions for the JSON metadata.
+- `index.html`: Interactive web application to inspect the `glyphs.json` and `glyphs.png` files. [View online](https://dtinth.github.io/cu-writer-fonts/)
 
 > [!NOTE]
 > Right now, the bitmaps from the HP-family fonts are variable-sized, although the glyphs are monospaced.
