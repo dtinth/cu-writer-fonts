@@ -30,6 +30,7 @@
             index = code - 0xe00 + 0xa0;
           }
           if (
+            (index >= 128 && index <= 148) ||
             (index >= 231 && index <= 237) ||
             (index >= 212 && index <= 215) ||
             index === 209
@@ -43,6 +44,30 @@
             glyph: font["0#" + index],
             mode,
           };
+        }
+        function preprocess(text) {
+          return text
+            .replaceAll("ั่", String.fromCharCode(128))
+            .replaceAll("ั้", String.fromCharCode(129))
+            .replaceAll("ั๊", String.fromCharCode(130))
+            .replaceAll("ั๋", String.fromCharCode(131))
+            .replaceAll("ี่", String.fromCharCode(132))
+            .replaceAll("ี้", String.fromCharCode(133))
+            .replaceAll("ี๊", String.fromCharCode(134))
+            .replaceAll("ี๋", String.fromCharCode(135))
+            .replaceAll("ึ่", String.fromCharCode(136))
+            .replaceAll("ึ้", String.fromCharCode(137))
+            .replaceAll("ึ๊", String.fromCharCode(138))
+            .replaceAll("ึ๋", String.fromCharCode(139))
+            .replaceAll("ื่", String.fromCharCode(140))
+            .replaceAll("ื้", String.fromCharCode(141))
+            .replaceAll("ื๊", String.fromCharCode(142))
+            .replaceAll("ื๋", String.fromCharCode(143))
+            .replaceAll("ิ่", String.fromCharCode(144))
+            .replaceAll("ิ้", String.fromCharCode(145))
+            .replaceAll("ิ๊", String.fromCharCode(146))
+            .replaceAll("ิ๋", String.fromCharCode(147))
+            .replaceAll("ิ์", String.fromCharCode(148));
         }
 
         const text = [
@@ -58,7 +83,7 @@
         let y = 0;
         for (const line of text) {
           let x = 0;
-          for (const character of line) {
+          for (const character of preprocess(line)) {
             const { glyph, mode } = resolveDrawSettings(character);
             if (glyph && (glyph.x || glyph.y)) {
               const headerBytes = glyph.header
