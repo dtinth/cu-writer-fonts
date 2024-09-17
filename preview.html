@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea id="info" readonly cols="80" rows="24"></textarea><br />
+    <canvas id="canvas" width="1024" height="8192"></canvas>
+    <script>
+      const files = [
+        "CU_HP_10.FNT.json",
+        "CU_HP_12.FNT.json",
+        "ITALIC.FON.json",
+        "ITALIC.P24.json",
+        "ITALIC.PRN.json",
+        "ITALIC2.FON.json",
+        "ITALIC2.P24.json",
+        "ITALIC2.PRN.json",
+        "ITALIC3.FON.json",
+        "ITALIC3.P24.json",
+        "ITALIC3.PRN.json",
+        "ITALIC4.FON.json",
+        "ITALIC4.P24.json",
+        "ITALIC4.PRN.json",
+        "ITALICS.P24.json",
+        "ITALICS.PRN.json",
+        "ITALICS2.P24.json",
+        "ITALICS3.P24.json",
+        "ITALICS4.P24.json",
+        "NORMAL.FON.json",
+        "NORMAL.P24.json",
+        "NORMAL.PRN.json",
+        "NORMAL2.FON.json",
+        "NORMAL2.P24.json",
+        "NORMAL2.PRN.json",
+        "NORMAL3.FON.json",
+        "NORMAL3.P24.json",
+        "NORMAL3.PRN.json",
+        "NORMAL4.FON.json",
+        "NORMAL4.P24.json",
+        "NORMAL4.PRN.json",
+        "NORMALS.P24.json",
+        "NORMALS.PRN.json",
+        "NORMALS2.P24.json",
+        "NORMALS2.PRN.json",
+        "NORMALS3.P24.json",
+        "NORMALS3.PRN.json",
+        "NORMALS4.P24.json",
+        "NORMALS4.PRN.json",
+      ];
+      const canvas = document.getElementById("canvas");
+      const info = document.getElementById("info");
+      const ctx = canvas.getContext("2d");
+      function* bits(data) {
+        for (const b of data) {
+          for (let i = 7; i >= 0; i--) {
+            yield !!(b & (1 << i));
+          }
+        }
+      }
+      async function main() {
+        let currentY = 1;
+        let currentX = 0;
+        let nextY = 0;
+        // const minYs = Array.from({ length: canvas.width }, () => 0);
+        const maxX = canvas.width;
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        const fonts = {};
+        for (const file of files) {
+          const font = {};
+          fonts[file] = font;
+          const response = await fetch(`./output/${file}`);
+          const glyphs = await response.json();
+          for (const [id, glyph] of Object.entries(glyphs)) {
+            const { width, height, data: dataBase64 } = glyph;
+            const dataPacked = new Uint8Array(
+              atob(dataBase64)
+                .split("")
+                .map((c) => c.charCodeAt(0))
+            );
+            const imageData = new ImageData(width, height);
+            const bitmap = Array.from(bits(dataPacked));
+            if (!bitmap.some((b) => b)) {
+              font[id] = {
+                width,
+                height,
+                header: glyph.header,
+              };
+              continue;
+            }
+            for (let i = 0; i < bitmap.length; i++) {
+              if (bitmap[i]) {
+                imageData.data[i * 4 + 0] = 0;
+                imageData.data[i * 4 + 1] = 0;
+                imageData.data[i * 4 + 2] = 0;
+                imageData.data[i * 4 + 3] = 255;
+              } else {
+                imageData.data[i * 4 + 0] = 255;
+                imageData.data[i * 4 + 1] = 255;
+                imageData.data[i * 4 + 2] = 255;
+                imageData.data[i * 4 + 3] = 255;
+              }
+            }
+
+            if (currentX + width > maxX) {
+              currentX = 0;
+              currentY = nextY;
+            }
+            nextY = Math.max(nextY, currentY + height);
+            ctx.putImageData(imageData, currentX, currentY);
+
+            // if (currentX + width > maxX) {
+            //   currentX = 0;
+            // }
+            // currentY = minYs[currentX];
+            // for (let i = 1; i < width; i++) {
+            //   currentY = Math.max(currentY, minYs[currentX + i]);
+            // }
+            // ctx.putImageData(imageData, currentX, currentY);
+            // for (let i = 0; i < width; i++) {
+            //   minYs[currentX + i] = currentY + height;
+            // }
+
+            font[id] = {
+              x: currentX,
+              y: currentY,
+              width,
+              height,
+              header: glyph.header,
+            };
+            currentX += width;
+          }
+        }
+        info.value = JSON.stringify(fonts, null, 2);
+      }
+      main();
+    </script>
+  </body>
+</html>
