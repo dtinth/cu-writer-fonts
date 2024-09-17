@@ -2,7 +2,7 @@
 
 Bitmap font data from [CU Writer](https://th.wikipedia.org/wiki/%E0%B8%8B%E0%B8%B5%E0%B8%A2%E0%B8%B9%E0%B9%84%E0%B8%A3%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C) converted into PNG image + JSON metadata.
 
-[Read the write-up.](https://notes.dt.in.th/private/CuWriterFonts)
+[Read the write-up.](https://notes.dt.in.th/CuWriterFonts)
 
 ## Repository contents
 
