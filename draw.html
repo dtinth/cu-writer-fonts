@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="1024" height="512"></canvas>
+    <script>
+      async function main() {
+        const imagePromise = fetch("glyphs.png").then((r) => r.blob());
+        const data = await fetch("glyphs.json").then((r) => r.json());
+        const imageBitmap = await createImageBitmap(await imagePromise);
+        console.log(imageBitmap);
+
+        /** @type {HTMLCanvasElement} */
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.globalCompositeOperation = "multiply";
+
+        function resolveDrawSettings(character) {
+          const code = character.charCodeAt(0);
+          const font = data["CU_HP_10.FNT"];
+          let index = code;
+          let mode = 0;
+          if (code > 0xe00 && code < 0xe80) {
+            index = code - 0xe00 + 0xa0;
+          }
+          if (
+            (index >= 231 && index <= 237) ||
+            (index >= 212 && index <= 215) ||
+            index === 209
+          ) {
+            mode = 1;
+          }
+          if (index >= 216 && index <= 218) {
+            mode = -1;
+          }
+          return {
+            glyph: font["0#" + index],
+            mode,
+          };
+        }
+
+        const text = [
+          "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า",
+          "กว่าบรรดาฝูงสัตว์เดรัจฉาน",
+          "จงฝ่าฟันพัฒนาวิชาการ",
+          "อย่าล้างผลาญฤๅเข่นฆ่าบีฑาใคร",
+          "ไม่ถือโทษโกรธแช่งซัดฮึดฮัดด่า",
+          "หัดอภัยเหมือนกีฬาอัชฌาสัย",
+          "ปฏิบัติประพฤติกฎกำหนดใจ",
+          "พูดจาให้จ๊ะ ๆ จ๋า น่าฟังเอยฯ",
+        ];
+        let y = 0;
+        for (const line of text) {
+          let x = 0;
+          for (const character of line) {
+            const { glyph, mode } = resolveDrawSettings(character);
+            if (glyph && (glyph.x || glyph.y)) {
+              const headerBytes = glyph.header
+                ? Array.from(atob(glyph.header), (c) => c.charCodeAt(0))
+                : [];
+              const image = await createImageBitmap(
+                imageBitmap,
+                glyph.x,
+                glyph.y,
+                glyph.width,
+                glyph.height
+              );
+              let yoff = 0;
+              if (mode === 1 || mode === -1) {
+                x -= 32;
+                yoff = mode > 0 ? -32 : 32;
+              }
+              ctx.drawImage(
+                image,
+                x + headerBytes[7],
+                y + 48 - headerBytes[9] + yoff
+              );
+            }
+            x += 32;
+          }
+          y += 60;
+        }
+      }
+      main();
+    </script>
+  </body>
+</html>

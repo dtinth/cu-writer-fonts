@@ -15,11 +15,13 @@ Bitmap font data from [CU Writer](https://th.wikipedia.org/wiki/%E0%B8%8B%E0%B8%
 - `glyphs.json`: Contains the final JSON metadata.
 - `glyphs.d.ts`: Contains the TypeScript type definitions for the JSON metadata.
 - `index.html`: Interactive web application to inspect the `glyphs.json` and `glyphs.png` files. [View online](https://dtinth.github.io/cu-writer-fonts/)
+- `draw.html`: Example rudimentary code that draws some Thai text. [View online](https://dtinth.github.io/cu-writer-fonts/draw.html)
 
 > [!NOTE]
-> Right now, the bitmaps from the HP-family fonts are variable-sized, although the glyphs are monospaced.
-> It is assume that the header should contain information on how to correctly render this variable-size bitmap, but it has not yet been studied.
-> The raw header content is available in the JSON metadata, base64 encoded.
+> The bitmaps from the HP-family fonts are variable-sized, although the glyphs are monospaced.
+> The glyph header (in `header` property as a base64-encoded string) contain information on how to correctly render this variable-size bitmap, but it has not yet been fully studied.
+> From preliminary observation (assuming `header` is a base64-decoded byte array), `header[7]` contains the x-offset (how many pixels to shift to the right to draw this glyph) and `header[9]` contains the y-baseline (how many pixels to shift up to draw this glyph).
+> An example can be found in `draw.html`.
 
 ## Glyphs
 
